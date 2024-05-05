@@ -1,0 +1,114 @@
+﻿@{
+    var monthYearList = ViewBag.MonthYearList as List<string>;
+    var stoCodeList = ViewBag.StoCodeList as List<string>;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/chartist.min.js"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="assets/js/demo.js"></script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <img src="assets\img\1551761607TC.png" class="img-thumbnail" alt="...">
+                </div>
+
+                <ul class="nav">
+                    <li class="active">
+                        <a href="Home/Index">
+                            <i class="pe-7s-graph"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="TonKhoHienThoi/Index">
+                            <i class="pe-7s-note2"></i>
+                            <p>Tồn Kho Hiện Thời</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="table.html">
+                            <i class="pe-7s-note2"></i>
+                            <p>Nhập Xuất Tồn</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="table.html">
+                            <i class="pe-7s-note2"></i>
+                            <p>Xuất Kho Vải</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="collapse navbar-collapse">
+                @using (Html.BeginForm("Search", "TonKhoHienThoi", FormMethod.Post))
+                {
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <select name="Sto_code" id="monthYearDropDown">
+                                @foreach (var item in stoCodeList)
+                                {
+                                    <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
+                                }
+                            </select>
+                        </li>
+                        <li>
+                            <select name="Ape_id" id="monthYearDropDown">
+                                @foreach (var item in monthYearList)
+                                {
+                                    <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
+                                }
+                            </select>
+                        </li>
+
+
+                        <input type="submit" value="Lưu" />
+
+                    </ul>
+                }
+            </div>
+        </nav>
+
+
+        <div class="main-panel">
+            <div class="container-xxl">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

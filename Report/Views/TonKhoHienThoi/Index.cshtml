@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model IPagedList<Report.Models.DTO.TonKhoHienThoi_DTO>
+@using PagedList.Mvc
+@using PagedList
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="fold-table">
+                <thead>
+                    <tr>
+                        <th>Mã Lô</th>
+                        <th>Mã Hàng</th>
+                        <th>Tên Hàng</th>
+                        <th>ERP Code</th>
+                        <th>Khu Vực Kho</th>
+                        <th>Tên Thuộc Tính</th>
+                        <th>Tồn Cuối</th>
+                        <th>ĐVT</th>
+                        <th>Mã Kho</th>
+                        <th>Tồn Cuối Quy Đổi</th>
+                        <th>Mẫu</th>
+                        <th>Số Bảng Kê</th>
+                        <th>Số Trục</th>
+                        <th>Mã Mẫu</th>
+                        <th>Kích Kho</th>
+                        <th>Khách Hàng</th>
+                        <th>Đơn Đặt Hàng</th>
+                        <th>Số Hóa Đơn</th>
+                        <th>Ngày Nhập</th>
+                        <th>Sử Dụng</th>
+
+                        <th>Phân Loại</th>
+                        <th>PO</th>
+                        <th>Yarn Lot</th>
+                        <th>Thành Phần Vải</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="view">
+                                <td>@item.Ma_lo</td>
+                                <td>@item.Ma_hang</td>
+                                <td>@item.Ten_hang</td>
+                                <td>@item.ERP_CODE</td>
+
+                                <td>@item.Khu_vuc_kho</td>
+                                <td>@item.Ten_thuoc_tinh</td>
+                                <td>@item.Ton_cuoi</td>
+                                <td>@item.DVT</td>
+                                <td>@item.makho</td>
+                                <td>@item.Ton_cuoi_quy_doi</td>
+                                <td>@item.Mau </td>
+                                <td>@item.SoBangKe</td>
+                                <td>@item.SoTruc</td>
+                                <td>@item.MaMau</td>
+                                <td>@item.KichKho</td>
+                                <td>@item.KhachHang</td>
+                                <td>@item.DonDatHang</td>
+                                <td>@item.SoHD</td>
+                                <td>@item.Ngay_nhap</td>
+                                <td>@item.SuDung</td>
+                                <td>@item.PhanLoai</td>
+                                <td>@item.PO</td>
+                                <td>@item.YARN_LOT</td>
+                                <td>@item.THANH_PHAN_VAI</td>
+
+                            </tr>
+                            <tr class="fold">
+                                <td colspan="7">
+                                    <div class="fold-content">
+
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>HD GC</th>
+                                                    <th>SO_VAN_DON</th>
+                                                    <th>NGAY_VAN_DON</th>
+                                                    <th>SO_TO_KHAI_HAI_QUAN</th>
+                                                    <th>NGAY_TO_KHAI_HAI_QUAN</th>
+                                                    <th>MA_HOP_DONG</th>
+                                                    <th>SO_HOP_DONG</th>
+                                                    <th>LOAI_GIAO_DICH</th>
+                                                    <th>THANH_PHAN_VAI</th>
+                                                    <th>SO_PHIEU_NHAP</th>
+                                                    <th>SO_CHUNG_TU</th>
+                                                    <th>MA_HAI_QUAN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var detail in item.TonKhoHienThoi_Details_DTO)
+                                                {
+                                                    <tr>
+                                                        <td>@detail.HD_GC</td>
+                                                        <td>@detail.SO_VAN_DON</td>
+                                                        <td>@detail.NGAY_VAN_DON</td>
+                                                        <td>@detail.SO_TO_KHAI_HAI_QUAN</td>
+                                                        <td>@detail.NGAY_TO_KHAI_HAI_QUAN</td>
+                                                        <td>@detail.MA_HOP_DONG</td>
+                                                        <td>@detail.SO_HOP_DONG</td>
+                                                        <td>@detail.LOAI_GIAO_DICH</td>
+                                                        <td>@detail.THANH_PHAN_VAI</td>
+                                                        <td>@detail.SO_PHIEU_NHAP</td>
+                                                        <td>@detail.SO_CHUNG_TU</td>
+                                                        <td>@detail.MA_HAI_QUAN</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+                        <div>
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        </div>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+
+    .pcs:after {
+        content: " pcs";
+    }
+
+    .cur:before {
+        content: "$";
+    }
+
+    .per:after {
+        content: "%";
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 0.2em 2em;
+    }
+
+    table {
+        width: 100%;
+    }
+
+        table th {
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        table th, table td {
+            padding: 0.4em;
+        }
+
+        table.fold-table > tbody > tr.view td, table.fold-table > tbody > tr.view th {
+            cursor: pointer;
+        }
+
+            table.fold-table > tbody > tr.view td:first-child,
+            table.fold-table > tbody > tr.view th:first-child {
+                position: relative;
+                padding-left: 20px;
+            }
+
+                table.fold-table > tbody > tr.view td:first-child:before,
+                table.fold-table > tbody > tr.view th:first-child:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 5px;
+                    width: 9px;
+                    height: 16px;
+                    margin-top: -8px;
+                    font: 16px fontawesome;
+                    color: #999;
+                    content: "";
+                    transition: all 0.3s ease;
+                }
+
+        table.fold-table > tbody > tr.view:nth-child(4n-1) {
+            background: #eee;
+        }
+
+        table.fold-table > tbody > tr.view.open {
+            background: tomato;
+            color: white;
+        }
+
+            table.fold-table > tbody > tr.view.open td:first-child:before, table.fold-table > tbody > tr.view.open th:first-child:before {
+                transform: rotate(-180deg);
+                color: #333;
+            }
+
+        table.fold-table > tbody > tr.fold {
+            display: none;
+        }
+
+            table.fold-table > tbody > tr.fold.open {
+                display: table-row;
+            }
+
+    .fold-content {
+        padding: 0.5em;
+    }
+
+        .fold-content h3 {
+            margin-top: 0;
+        }
+
+        .fold-content > table {
+            border: 2px solid #ccc;
+        }
+
+            .fold-content > table > tbody tr:nth-child(even) {
+                background: #eee;
+            }
+</style>
+
+<script>
+    $(function () {
+        $(".fold-table tr.view").on("click", function () {
+            $(this).toggleClass("open").next(".fold").toggleClass("open");
+        });
+    });
+</script>
+

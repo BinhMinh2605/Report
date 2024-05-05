@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APP_USERS">
+          <Key>
+            <PropertyRef Name="AUS_ID" />
+          </Key>
+          <Property Name="AUS_ID" Type="number" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="APP_NAME" Type="varchar2" MaxLength="10" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="MODIFY_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="30" />
+          <Property Name="EMP_ID" Type="varchar2" MaxLength="20" />
+          <Property Name="PRO_ADMIN" Type="varchar2" MaxLength="1" />
+          <Property Name="KI_ADMIN" Type="varchar2" MaxLength="1" />
+          <Property Name="TIMECHECK_ADMIN" Type="varchar2" MaxLength="1" />
+          <Property Name="FORUM_ADMIN" Type="varchar2" MaxLength="1" />
+          <Property Name="CHART_ADMIN" Type="varchar2" MaxLength="1" />
+          <Property Name="ATTRIBUTE1" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE2" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE3" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE4" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE5" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE6" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE7" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE8" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE9" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE10" Type="varchar2" MaxLength="240" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="1" />
+          <Property Name="STO_IN_CCE_ADMIN" Type="varchar2" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="STORES">
+          <Key>
+            <PropertyRef Name="STO_CODE" />
+          </Key>
+          <Property Name="STO_CODE" Type="varchar2" MaxLength="2" Nullable="false" />
+          <Property Name="CLASS" Type="varchar2" MaxLength="240" Nullable="false" />
+          <Property Name="TYPE" Type="varchar2" MaxLength="2" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1000" />
+          <Property Name="CCE_ID" Type="varchar2" MaxLength="3" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="100" />
+          <Property Name="CITY" Type="varchar2" MaxLength="50" />
+          <Property Name="PROVINCE" Type="varchar2" MaxLength="50" />
+          <Property Name="COUNTRY" Type="varchar2" MaxLength="50" />
+          <Property Name="TELEPHONE" Type="varchar2" MaxLength="240" />
+          <Property Name="FAX" Type="varchar2" MaxLength="240" />
+          <Property Name="STOREKEEPER" Type="varchar2" MaxLength="30" />
+          <Property Name="REAL" Type="varchar2" MaxLength="1" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="1" Nullable="false" />
+          <Property Name="EFFECTIVE_DATE_FROM" Type="date" Nullable="false" />
+          <Property Name="EFFECTIVE_DATE_TO" Type="date" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="30" />
+          <Property Name="MODIFY_DATE" Type="date" />
+          <Property Name="ACO_ID" Type="varchar2" MaxLength="10" />
+          <Property Name="RD_CONTROL" Type="varchar2" MaxLength="1" />
+          <Property Name="OUN_ID" Type="number" Precision="15" Scale="0" />
+          <Property Name="ATTRIBUTE1" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE2" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE3" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE4" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE5" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE6" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE7" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE8" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE9" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE10" Type="varchar2" MaxLength="240" />
+          <Property Name="STO_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="SAR_ITEM_CONTROL" Type="varchar2" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PROD11G.REPORT_PLM_TC' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="REPORT_PLM_TC">
+          <Key>
+            <PropertyRef Name="RHE_ID" />
+            <PropertyRef Name="RHE_NUMBER" />
+          </Key>
+          <Property Name="RHE_ID" Type="number" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="RHE_NUMBER" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="REF_DOC_NUMBER" Type="varchar2" MaxLength="30" />
+          <Property Name="RECEIPT_DATE" Type="date" />
+          <Property Name="RV_MEANING" Type="varchar2" MaxLength="240" />
+          <Property Name="NAME" Type="varchar2" MaxLength="250" />
+          <Property Name="IIT_CODE" Type="varchar2" MaxLength="40" />
+          <Property Name="TEN_VT" Type="varchar2" MaxLength="100" />
+          <Property Name="UOM_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="QUANTITY" Type="number" Precision="20" Scale="4" />
+          <Property Name="ACTUAL_QUANTITY" Type="number" Precision="20" Scale="4" />
+          <Property Name="IAT_CODE2" Type="varchar2" MaxLength="240" />
+          <Property Name="IAT_CODE9" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE1" Type="varchar2" MaxLength="240" />
+          <Property Name="ATTRIBUTE11" Type="varchar2" MaxLength="240" />
+          <Property Name="CONTRACT_NUMBER2" Type="varchar2" MaxLength="240" />
+          <Property Name="CUSTOMS_DECLARATION_NUMBER" Type="varchar2" MaxLength="30" />
+          <Property Name="CUSTOMS_DECLARATION_DATE" Type="date" />
+          <Property Name="BILL_NUMBER" Type="varchar2" MaxLength="30" />
+          <Property Name="BILL_DATE" Type="date" />
+          <Property Name="STO_CODE" Type="varchar2" MaxLength="2" />
+          <Property Name="ATTRIBUTE7" Type="varchar2" MaxLength="240" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="APP_USERS" EntityType="Self.APP_USERS" Schema="PROD11G" store:Type="Tables" />
+          <EntitySet Name="STORES" EntityType="Self.STORES" Schema="PROD11G" store:Type="Tables" />
+          <EntitySet Name="REPORT_PLM_TC" EntityType="Self.REPORT_PLM_TC" store:Type="Views" store:Schema="PROD11G">
+            <DefiningQuery>SELECT 
+"REPORT_PLM_TC"."RHE_ID" AS "RHE_ID", 
+"REPORT_PLM_TC"."RHE_NUMBER" AS "RHE_NUMBER", 
+"REPORT_PLM_TC"."REF_DOC_NUMBER" AS "REF_DOC_NUMBER", 
+"REPORT_PLM_TC"."RECEIPT_DATE" AS "RECEIPT_DATE", 
+"REPORT_PLM_TC"."RV_MEANING" AS "RV_MEANING", 
+"REPORT_PLM_TC"."NAME" AS "NAME", 
+"REPORT_PLM_TC"."IIT_CODE" AS "IIT_CODE", 
+"REPORT_PLM_TC"."TEN_VT" AS "TEN_VT", 
+"REPORT_PLM_TC"."UOM_CODE" AS "UOM_CODE", 
+"REPORT_PLM_TC"."QUANTITY" AS "QUANTITY", 
+"REPORT_PLM_TC"."ACTUAL_QUANTITY" AS "ACTUAL_QUANTITY", 
+"REPORT_PLM_TC"."IAT_CODE2" AS "IAT_CODE2", 
+"REPORT_PLM_TC"."IAT_CODE9" AS "IAT_CODE9", 
+"REPORT_PLM_TC"."ATTRIBUTE1" AS "ATTRIBUTE1", 
+"REPORT_PLM_TC"."ATTRIBUTE11" AS "ATTRIBUTE11", 
+"REPORT_PLM_TC"."CONTRACT_NUMBER2" AS "CONTRACT_NUMBER2", 
+"REPORT_PLM_TC"."CUSTOMS_DECLARATION_NUMBER" AS "CUSTOMS_DECLARATION_NUMBER", 
+"REPORT_PLM_TC"."CUSTOMS_DECLARATION_DATE" AS "CUSTOMS_DECLARATION_DATE", 
+"REPORT_PLM_TC"."BILL_NUMBER" AS "BILL_NUMBER", 
+"REPORT_PLM_TC"."BILL_DATE" AS "BILL_DATE", 
+"REPORT_PLM_TC"."STO_CODE" AS "STO_CODE", 
+"REPORT_PLM_TC"."ATTRIBUTE7" AS "ATTRIBUTE7"
+FROM "PROD11G"."REPORT_PLM_TC" "REPORT_PLM_TC"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="REPORT_PLM_TC">
+          <Key>
+            <PropertyRef Name="RHE_ID" />
+            <PropertyRef Name="RHE_NUMBER" />
+          </Key>
+          <Property Name="RHE_ID" Type="Int64" Nullable="false" />
+          <Property Name="RHE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REF_DOC_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RECEIPT_DATE" Type="DateTime" />
+          <Property Name="RV_MEANING" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IIT_CODE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TEN_VT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UOM_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="ACTUAL_QUANTITY" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="IAT_CODE2" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="IAT_CODE9" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE1" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE11" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRACT_NUMBER2" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMS_DECLARATION_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMS_DECLARATION_DATE" Type="DateTime" />
+          <Property Name="BILL_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BILL_DATE" Type="DateTime" />
+          <Property Name="STO_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE7" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="REPORT_PLM_TC" EntityType="Self.REPORT_PLM_TC" />
+          <EntitySet Name="APP_USERS" EntityType="Model.APP_USERS" />
+          <EntitySet Name="STORES" EntityType="Model.STORE" />
+        </EntityContainer>
+        <EntityType Name="APP_USERS">
+          <Key>
+            <PropertyRef Name="AUS_ID" />
+          </Key>
+          <Property Name="AUS_ID" Type="Int64" Nullable="false" />
+          <Property Name="USER_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="APP_NAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="CREATED_BY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMP_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRO_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="KI_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TIMECHECK_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FORUM_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CHART_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE1" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE2" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE3" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE4" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE5" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE6" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE7" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE8" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE9" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE10" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STO_IN_CCE_ADMIN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STORE">
+          <Key>
+            <PropertyRef Name="STO_CODE" />
+          </Key>
+          <Property Name="STO_CODE" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS" Type="String" Nullable="false" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CCE_ID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="STOREKEEPER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="REAL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="EFFECTIVE_DATE_FROM" Type="DateTime" Nullable="false" />
+          <Property Name="EFFECTIVE_DATE_TO" Type="DateTime" />
+          <Property Name="CREATED_BY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DATE" Type="DateTime" />
+          <Property Name="ACO_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RD_CONTROL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OUN_ID" Type="Int64" />
+          <Property Name="ATTRIBUTE1" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE2" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE3" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE4" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE5" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE6" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE7" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE8" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE9" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE10" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="STO_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SAR_ITEM_CONTROL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ReportEntities">
+          <EntitySetMapping Name="REPORT_PLM_TC">
+            <EntityTypeMapping TypeName="Model.REPORT_PLM_TC">
+              <MappingFragment StoreEntitySet="REPORT_PLM_TC">
+                <ScalarProperty Name="RHE_ID" ColumnName="RHE_ID" />
+                <ScalarProperty Name="RHE_NUMBER" ColumnName="RHE_NUMBER" />
+                <ScalarProperty Name="REF_DOC_NUMBER" ColumnName="REF_DOC_NUMBER" />
+                <ScalarProperty Name="RECEIPT_DATE" ColumnName="RECEIPT_DATE" />
+                <ScalarProperty Name="RV_MEANING" ColumnName="RV_MEANING" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IIT_CODE" ColumnName="IIT_CODE" />
+                <ScalarProperty Name="TEN_VT" ColumnName="TEN_VT" />
+                <ScalarProperty Name="UOM_CODE" ColumnName="UOM_CODE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="ACTUAL_QUANTITY" ColumnName="ACTUAL_QUANTITY" />
+                <ScalarProperty Name="IAT_CODE2" ColumnName="IAT_CODE2" />
+                <ScalarProperty Name="IAT_CODE9" ColumnName="IAT_CODE9" />
+                <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+                <ScalarProperty Name="ATTRIBUTE11" ColumnName="ATTRIBUTE11" />
+                <ScalarProperty Name="CONTRACT_NUMBER2" ColumnName="CONTRACT_NUMBER2" />
+                <ScalarProperty Name="CUSTOMS_DECLARATION_NUMBER" ColumnName="CUSTOMS_DECLARATION_NUMBER" />
+                <ScalarProperty Name="CUSTOMS_DECLARATION_DATE" ColumnName="CUSTOMS_DECLARATION_DATE" />
+                <ScalarProperty Name="BILL_NUMBER" ColumnName="BILL_NUMBER" />
+                <ScalarProperty Name="BILL_DATE" ColumnName="BILL_DATE" />
+                <ScalarProperty Name="STO_CODE" ColumnName="STO_CODE" />
+                <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APP_USERS">
+            <EntityTypeMapping TypeName="Model.APP_USERS">
+              <MappingFragment StoreEntitySet="APP_USERS">
+                <ScalarProperty Name="STO_IN_CCE_ADMIN" ColumnName="STO_IN_CCE_ADMIN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+                <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+                <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+                <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+                <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+                <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+                <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+                <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+                <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+                <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+                <ScalarProperty Name="CHART_ADMIN" ColumnName="CHART_ADMIN" />
+                <ScalarProperty Name="FORUM_ADMIN" ColumnName="FORUM_ADMIN" />
+                <ScalarProperty Name="TIMECHECK_ADMIN" ColumnName="TIMECHECK_ADMIN" />
+                <ScalarProperty Name="KI_ADMIN" ColumnName="KI_ADMIN" />
+                <ScalarProperty Name="PRO_ADMIN" ColumnName="PRO_ADMIN" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="APP_NAME" ColumnName="APP_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="AUS_ID" ColumnName="AUS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STORES">
+            <EntityTypeMapping TypeName="Model.STORE">
+              <MappingFragment StoreEntitySet="STORES">
+                <ScalarProperty Name="SAR_ITEM_CONTROL" ColumnName="SAR_ITEM_CONTROL" />
+                <ScalarProperty Name="STO_NUMBER" ColumnName="STO_NUMBER" />
+                <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+                <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+                <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+                <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+                <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+                <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+                <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+                <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+                <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+                <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+                <ScalarProperty Name="OUN_ID" ColumnName="OUN_ID" />
+                <ScalarProperty Name="RD_CONTROL" ColumnName="RD_CONTROL" />
+                <ScalarProperty Name="ACO_ID" ColumnName="ACO_ID" />
+                <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="EFFECTIVE_DATE_TO" ColumnName="EFFECTIVE_DATE_TO" />
+                <ScalarProperty Name="EFFECTIVE_DATE_FROM" ColumnName="EFFECTIVE_DATE_FROM" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="REAL" ColumnName="REAL" />
+                <ScalarProperty Name="STOREKEEPER" ColumnName="STOREKEEPER" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CCE_ID" ColumnName="CCE_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="STO_CODE" ColumnName="STO_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
