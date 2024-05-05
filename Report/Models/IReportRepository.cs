@@ -10,7 +10,7 @@ namespace Report.Models
     public interface IReportRepository
     {
         Task<List<TonKhoHienThoi_DTO>> ReportTonKhoHienThoi(string Ape_id, string Sto_code);
-        Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon(string ToDate, string FromDate, string Sto_code);
+        Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon(string Ape_id, string Sto_code);
         Task<List<String>> GetStoCode();
     }
 }

@@ -96,16 +96,16 @@ namespace Report.Models
             }
             catch { throw; }
         }
-        public async Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon(string ToDate, string FromDate, string Sto_code)
+        public async Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon( string Ape_id, string Sto_code)
         {
             try
             {
                 using (var ctx = new ReportEntities())
                 {
-                    string Ape_id = "4-2024";
+                    DateTime date = DateTime.ParseExact(Ape_id, "M-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime previousMonth = date.AddMonths(-1);
 
-                    string Ape_id2 = "3-2024";
-                    var param1 = new OracleParameter("pApe_id_2", OracleDbType.Varchar2, Ape_id2, ParameterDirection.Input);
+                    var param1 = new OracleParameter("pApe_id_2", OracleDbType.Varchar2, previousMonth.ToString("M-yyyy"), ParameterDirection.Input);
                     var param2 = new OracleParameter("pSto_code", OracleDbType.Varchar2, Sto_code, ParameterDirection.Input);
                     var param3 = new OracleParameter("pApe_id", OracleDbType.Varchar2, Ape_id, ParameterDirection.Input);
                     var param4 = new OracleParameter("out_cursor", OracleDbType.RefCursor, ParameterDirection.Output);
@@ -150,7 +150,7 @@ namespace Report.Models
                             MA_HAI_QUAN = y.MA_HAI_QUAN
 
 
-                        })
+                        }).Where(y=>y.SO_PHIEU_NHAP != null)
                     });
                     return await System.Threading.Tasks.Task.FromResult(results.ToList());
                 }

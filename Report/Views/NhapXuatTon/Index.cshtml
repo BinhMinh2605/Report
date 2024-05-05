@@ -1,19 +1,18 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-}
 
-@model IPagedList<Report.Models.DTO.TonKhoHienThoi_DTO>
-@using PagedList.Mvc
-@using PagedList
+}
 @{
     var monthYearList = ViewBag.MonthYearList as List<string>;
     var stoCodeList = ViewBag.StoCodeList as List<string>;
 }
-
+@model IPagedList<Report.Models.DTO.NhapXuatTon_DTO>
+@using PagedList.Mvc
+@using PagedList
 <nav class="navbar navbar-default">
     <div class="collapse navbar-collapse">
-        @using (Html.BeginForm("Search", "TonKhoHienThoi", FormMethod.Post))
+        @using (Html.BeginForm("Search", "NhapXuatTon", FormMethod.Post))
         {
             <ul class="nav navbar-nav navbar-right">
 
@@ -47,31 +46,17 @@
             <table class="fold-table">
                 <thead>
                     <tr>
-                        <th>Mã Lô</th>
-                        <th>Mã Hàng</th>
+                        <th>ICA_NAME</th>
+                        <th>IIT_CODE</th>
                         <th>Tên Hàng</th>
-                        <th>ERP Code</th>
-                        <th>Khu Vực Kho</th>
-                        <th>Tên Thuộc Tính</th>
-                        <th>Tồn Cuối</th>
-                        <th>ĐVT</th>
-                        <th>Mã Kho</th>
-                        <th>Tồn Cuối Quy Đổi</th>
-                        <th>Mẫu</th>
-                        <th>Số Bảng Kê</th>
-                        <th>Số Trục</th>
-                        <th>Mã Mẫu</th>
-                        <th>Kích Kho</th>
-                        <th>Khách Hàng</th>
-                        <th>Đơn Đặt Hàng</th>
-                        <th>Số Hóa Đơn</th>
-                        <th>Ngày Nhập</th>
-                        <th>Sử Dụng</th>
+                        <th>LOT_NUMBER</th>
+                        <th>ERP_CODE</th>
+                        <th>NHA_SX</th>
+                        <th>SL_TON</th>
+                        <th>SL_NHAP</th>
+                        <th>SL_XUAT</th>
+                        <th>SL_CUOI</th>
 
-                        <th>Phân Loại</th>
-                        <th>PO</th>
-                        <th>Yarn Lot</th>
-                        <th>Thành Phần Vải</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,32 +65,17 @@
                         foreach (var item in Model)
                         {
                             <tr class="view">
-                                <td>@item.Ma_lo</td>
-                                <td>@item.Ma_hang</td>
-                                <td>@item.Ten_hang</td>
+                                <td>@item.ICA_NAME</td>
+                                <td>@item.IIT_CODE</td>
+                                <td>@item.TEN_HANG</td>
+                                <td>@item.LOT_NUMBER</td>
+
                                 <td>@item.ERP_CODE</td>
-
-                                <td>@item.Khu_vuc_kho</td>
-                                <td>@item.Ten_thuoc_tinh</td>
-                                <td>@item.Ton_cuoi</td>
-                                <td>@item.DVT</td>
-                                <td>@item.makho</td>
-                                <td>@item.Ton_cuoi_quy_doi</td>
-                                <td>@item.Mau </td>
-                                <td>@item.SoBangKe</td>
-                                <td>@item.SoTruc</td>
-                                <td>@item.MaMau</td>
-                                <td>@item.KichKho</td>
-                                <td>@item.KhachHang</td>
-                                <td>@item.DonDatHang</td>
-                                <td>@item.SoHD</td>
-                                <td>@item.Ngay_nhap</td>
-                                <td>@item.SuDung</td>
-                                <td>@item.PhanLoai</td>
-                                <td>@item.PO</td>
-                                <td>@item.YARN_LOT</td>
-                                <td>@item.THANH_PHAN_VAI</td>
-
+                                <td>@item.NHA_SX</td>
+                                <td>@item.SL_TON</td>
+                                <td>@item.SL_NHAP</td>
+                                <td>@item.SL_XUAT</td>
+                                <td>@item.SL_CUOI</td>
                             </tr>
                             <tr class="fold">
                                 <td colspan="7">
@@ -124,12 +94,12 @@
                                                     <th>LOAI_GIAO_DICH</th>
                                                     <th>THANH_PHAN_VAI</th>
                                                     <th>SO_PHIEU_NHAP</th>
-                                                    <th>SO_CHUNG_TU</th>
+                                                   
                                                     <th>MA_HAI_QUAN</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach (var detail in item.TonKhoHienThoi_Details_DTO)
+                                                @foreach (var detail in item.NhapXuatTon_Details_DTO)
                                                 {
                                                     <tr>
                                                         <td>@detail.HD_GC</td>
@@ -142,7 +112,7 @@
                                                         <td>@detail.LOAI_GIAO_DICH</td>
                                                         <td>@detail.THANH_PHAN_VAI</td>
                                                         <td>@detail.SO_PHIEU_NHAP</td>
-                                                        <td>@detail.SO_CHUNG_TU</td>
+
                                                         <td>@detail.MA_HAI_QUAN</td>
                                                     </tr>
                                                 }

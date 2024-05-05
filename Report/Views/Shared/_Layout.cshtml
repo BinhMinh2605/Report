@@ -1,7 +1,4 @@
-﻿@{
-    var monthYearList = ViewBag.MonthYearList as List<string>;
-    var stoCodeList = ViewBag.StoCodeList as List<string>;
-}
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a href="table.html">
+                        <a href="NhapXuatTon/Index">
                             <i class="pe-7s-note2"></i>
                             <p>Nhập Xuất Tồn</p>
                         </a>
@@ -64,39 +61,6 @@
                 </ul>
             </div>
         </div>
-
-        <nav class="navbar navbar-default">
-            <div class="collapse navbar-collapse">
-                @using (Html.BeginForm("Search", "TonKhoHienThoi", FormMethod.Post))
-                {
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li class="dropdown">
-                            <select name="Sto_code" id="monthYearDropDown">
-                                @foreach (var item in stoCodeList)
-                                {
-                                    <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
-                                }
-                            </select>
-                        </li>
-                        <li>
-                            <select name="Ape_id" id="monthYearDropDown">
-                                @foreach (var item in monthYearList)
-                                {
-                                    <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
-                                }
-                            </select>
-                        </li>
-
-
-                        <input type="submit" value="Lưu" />
-
-                    </ul>
-                }
-            </div>
-        </nav>
-
-
         <div class="main-panel">
             <div class="container-xxl">
                 @RenderBody()
