@@ -1,15 +1,10 @@
-﻿using OfficeOpenXml;
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 using Report.Models.DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace Report.Models
 {
