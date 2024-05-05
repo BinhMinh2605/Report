@@ -14,5 +14,6 @@ namespace Report.Models
         Task<List<String>> GetStoCode();
         Task<List<Responsive_NhapXuatTon_DTO>> ExportNhapXuatTon(string Ape_id, string Sto_code);
         Task<List<Responsive_TonKhoHienThoi_DTO>> EportTonKhoHienThoi(string Ape_id, string Sto_code);
+        Task<List<Dashboard_DTO>> Dashboard(string Ape_id, string Sto_code);
     }
 }

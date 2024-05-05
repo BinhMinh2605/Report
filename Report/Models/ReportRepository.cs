@@ -95,7 +95,7 @@ namespace Report.Models
             }
             catch { throw; }
         }
-        public async Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon( string Ape_id, string Sto_code)
+        public async Task<List<NhapXuatTon_DTO>> ReportNhapXuatTon(string Ape_id, string Sto_code)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace Report.Models
                             MA_HAI_QUAN = y.MA_HAI_QUAN
 
 
-                        }).Where(y=>y.SO_PHIEU_NHAP != null)
+                        }).Where(y => y.SO_PHIEU_NHAP != null)
                     });
                     return await System.Threading.Tasks.Task.FromResult(results.ToList());
                 }
@@ -179,7 +179,7 @@ namespace Report.Models
                     var res = ctx.Database.SqlQuery<Responsive_NhapXuatTon_DTO>(
                     "BEGIN TC_REPORT.EXCEL_NHAP_XUAT_TON(:pApe_id_2,:pSto_code,:pApe_id,:rpt); end;",
                     param1, param2, param3, param4).ToList();
-                  
+
                     return await System.Threading.Tasks.Task.FromResult(res.ToList());
                 }
             }
@@ -196,11 +196,70 @@ namespace Report.Models
                     var param3 = new OracleParameter("out_cursor", OracleDbType.RefCursor, ParameterDirection.Output);
                     var res = ctx.Database.SqlQuery<Responsive_TonKhoHienThoi_DTO>(
                     "BEGIN TC_REPORT.EXCEL_TON_KHO_HIEN_THOI(:pApe_id,:pSto_code,:rpt); end;",
-                    param0, param1, param3);                 
+                    param0, param1, param3);
                     return await System.Threading.Tasks.Task.FromResult(res.ToList());
                 }
             }
             catch { throw; }
         }
+        public async Task<List<Dashboard_DTO>> Dashboard(string Ape_id, string Sto_code)
+        {
+            try
+            {
+                using (var ctx = new ReportEntities())
+                {
+                    var param0 = new OracleParameter("pApe_id", OracleDbType.Varchar2, Ape_id, ParameterDirection.Input);
+                    var param1 = new OracleParameter("pSto_code", OracleDbType.Varchar2, Sto_code, ParameterDirection.Input);
+                    var param2 = new OracleParameter("out_cursor", OracleDbType.RefCursor, ParameterDirection.Output);
+                    var res = ctx.Database.SqlQuery<Dashboard_DTO>(
+                    "BEGIN TC_REPORT.DASHBOARD(:pApe_id,:pSto_code,:rpt); end;",
+                    param0, param1, param2).ToList();
+
+                    var s = res.GroupBy(x => new
+                    {
+                        x.HD_GC,
+                        x.SO_VAN_DON,
+                        x.NGAY_VAN_DON,
+                        x.SO_TO_KHAI_HAI_QUAN,
+                        x.NGAY_TO_KHAI_HAI_QUAN,
+                        x.MA_HOP_DONG,
+                        x.SO_HOP_DONG,
+                        x.SO_CHUNG_TU,
+                        x.SO_PHIEU_NHAP,
+                        x.STO_CODE,
+                        x.Tong_Phieu_Nhap,
+                        x.Tong_Phieu_Thieu_Thong_Tin
+
+                    }).Select(x => new Dashboard_DTO
+                    {
+
+                        HD_GC = x.Key.HD_GC,
+                        SO_VAN_DON = x.Key.SO_VAN_DON,
+                        NGAY_VAN_DON = x.Key.NGAY_VAN_DON,
+                        SO_TO_KHAI_HAI_QUAN = x.Key.SO_TO_KHAI_HAI_QUAN,
+                        NGAY_TO_KHAI_HAI_QUAN = x.Key.NGAY_TO_KHAI_HAI_QUAN,
+                        MA_HOP_DONG = x.Key.MA_HOP_DONG,
+                        SO_HOP_DONG = x.Key.SO_HOP_DONG,
+                        SO_CHUNG_TU = x.Key.SO_CHUNG_TU,
+                        SO_PHIEU_NHAP = x.Key.SO_PHIEU_NHAP,
+
+                        STO_CODE = x.Key.STO_CODE,
+                        Tong_Phieu_Nhap = x.Key.Tong_Phieu_Nhap,
+                        Tong_Phieu_Thieu_Thong_Tin = x.Key.Tong_Phieu_Thieu_Thong_Tin,
+                        Dashboard_Details_DTO = x.Select(y => new Dashboard_Details_DTO
+                        {
+                            NAME = y.NAME,
+                            MA_HAI_QUAN = y.MA_HAI_QUAN,
+                            LOT_NUMBER = y.LOT_NUMBER
+
+                        })
+
+                    }).ToList();
+                    return await System.Threading.Tasks.Task.FromResult(s.ToList());
+                }
+            }
+            catch { throw; }
+        }
+
     }
 }

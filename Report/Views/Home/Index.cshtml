@@ -1,5 +1,239 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var Tong_Phieu_Nhap = ViewBag.Tong_Phieu_Nhap;
+    var Tong_Phieu_Thieu_Thong_Tin = ViewBag.Tong_Phieu_Thieu_Thong_Tin;
 
 }
+@model IPagedList<Report.Models.DTO.Dashboard_DTO>
+@using PagedList.Mvc
+@using PagedList
+@{
+    var monthYearList = ViewBag.MonthYearList as List<string>;
+    var stoCodeList = ViewBag.StoCodeList as List<string>;
+}
+
+<nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <select name="Sto_code" id="monthYearDropDown">
+                        @foreach (var item in stoCodeList)
+                        {
+                            <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
+                        }
+                    </select>
+                </li>
+                <li>
+                    <select name="Ape_id" id="monthYearDropDown">
+                        @foreach (var item in monthYearList)
+                        {
+                            <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
+                        }
+                    </select>
+                </li>
+
+
+                <input type="submit" value="Lưu" />
+
+            </ul>
+        }
+      
+    </div>
+</nav>
+
+<p>Tổng @Tong_Phieu_Nhap</p>
+<p>Thiếu @Tong_Phieu_Thieu_Thong_Tin</p>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="fold-table">
+                <thead>
+                    <tr>
+                        <th>Số phiếu nhập</th>
+                        <th>Số chứng từ</th>
+                        <th>Hợp đồng GC</th>
+                        <th>Mã hợp đồng</th>
+                        <th>Số hợp đồng</th>
+                        <th>Số vận đơn</th>
+                        <th>Ngày vận đơn</th>
+                        <th>Số tờ khai</th>
+                        <th>Ngày tờ khai</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="view">
+
+                                <td>@item.SO_PHIEU_NHAP</td>
+                                <td>@item.SO_CHUNG_TU</td>
+                                <td>@item.HD_GC</td>
+                                <td>@item.MA_HOP_DONG</td>
+                                <td>@item.SO_HOP_DONG</td>
+
+                                <td>@item.SO_VAN_DON</td>
+                                <td>@item.NGAY_VAN_DON</td>
+                                <td>@item.SO_TO_KHAI_HAI_QUAN</td>
+                                <td>@item.NGAY_TO_KHAI_HAI_QUAN</td>
+                            </tr>
+                            <tr class="fold">
+                                <td colspan="7">
+                                    <div class="fold-content">
+
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã Hàng</th>
+                                                    <th>Lot</th>
+                                                    <th>Mã Hải Quan</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var detail in item.Dashboard_Details_DTO)
+                                                {
+                                                    <tr>
+                                                        <td>@detail.NAME</td>
+                                                        <td>@detail.LOT_NUMBER</td>
+                                                        <td>@detail.MA_HAI_QUAN</td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+                        <div>
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        </div>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+
+    .pcs:after {
+        content: " pcs";
+    }
+
+    .cur:before {
+        content: "$";
+    }
+
+    .per:after {
+        content: "%";
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 0.2em 2em;
+    }
+
+    table {
+        width: 100%;
+    }
+
+        table th {
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        table th, table td {
+            padding: 0.4em;
+        }
+
+        table.fold-table > tbody > tr.view td, table.fold-table > tbody > tr.view th {
+            cursor: pointer;
+        }
+
+            table.fold-table > tbody > tr.view td:first-child,
+            table.fold-table > tbody > tr.view th:first-child {
+                position: relative;
+                padding-left: 20px;
+            }
+
+                table.fold-table > tbody > tr.view td:first-child:before,
+                table.fold-table > tbody > tr.view th:first-child:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 5px;
+                    width: 9px;
+                    height: 16px;
+                    margin-top: -8px;
+                    font: 16px fontawesome;
+                    color: #999;
+                    content: "";
+                    transition: all 0.3s ease;
+                }
+
+        table.fold-table > tbody > tr.view:nth-child(4n-1) {
+            background: #eee;
+        }
+
+        table.fold-table > tbody > tr.view.open {
+            background: tomato;
+            color: white;
+        }
+
+            table.fold-table > tbody > tr.view.open td:first-child:before, table.fold-table > tbody > tr.view.open th:first-child:before {
+                transform: rotate(-180deg);
+                color: #333;
+            }
+
+        table.fold-table > tbody > tr.fold {
+            display: none;
+        }
+
+            table.fold-table > tbody > tr.fold.open {
+                display: table-row;
+            }
+
+    .fold-content {
+        padding: 0.5em;
+    }
+
+        .fold-content h3 {
+            margin-top: 0;
+        }
+
+        .fold-content > table {
+            border: 2px solid #ccc;
+        }
+
+            .fold-content > table > tbody tr:nth-child(even) {
+                background: #eee;
+            }
+</style>
+
+<script>
+    $(function () {
+        $(".fold-table tr.view").on("click", function () {
+            $(this).toggleClass("open").next(".fold").toggleClass("open");
+        });
+    });
+</script>
+
 

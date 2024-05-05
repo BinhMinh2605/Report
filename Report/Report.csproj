@@ -226,6 +226,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhapXuatTonController.cs" />
     <Compile Include="Controllers\TonKhoHienThoiController.cs" />
@@ -235,6 +236,8 @@
     <Compile Include="Models\APP_USERS.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Dashboard_Details_DTO.cs" />
+    <Compile Include="Models\DTO\Dashboard_DTO.cs" />
     <Compile Include="Models\DTO\NhapXuatTon_Details_DTO.cs" />
     <Compile Include="Models\DTO\NhapXuatTon_DTO.cs" />
     <Compile Include="Models\DTO\Responsive_NhapXuatTon_DTO.cs" />
@@ -413,6 +416,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\TonKhoHienThoi\Index.cshtml" />
     <Content Include="Views\NhapXuatTon\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
