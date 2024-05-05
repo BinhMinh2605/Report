@@ -1,11 +1,15 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using OfficeOpenXml;
+using Oracle.ManagedDataAccess.Client;
 using Report.Models.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace Report.Models
 {
@@ -163,6 +167,45 @@ namespace Report.Models
             {
                 return await Task.FromResult(ctx.STORES.Where(x => x.CCE_ID == "A11").Select(X => X.STO_CODE).ToList());
             }
+        }
+        public async Task<List<Responsive_NhapXuatTon_DTO>> ExportNhapXuatTon(string Ape_id, string Sto_code)
+        {
+            try
+            {
+                using (var ctx = new ReportEntities())
+                {
+                    DateTime date = DateTime.ParseExact(Ape_id, "M-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime previousMonth = date.AddMonths(-1);
+
+                    var param1 = new OracleParameter("pApe_id_2", OracleDbType.Varchar2, previousMonth.ToString("M-yyyy"), ParameterDirection.Input);
+                    var param2 = new OracleParameter("pSto_code", OracleDbType.Varchar2, Sto_code, ParameterDirection.Input);
+                    var param3 = new OracleParameter("pApe_id", OracleDbType.Varchar2, Ape_id, ParameterDirection.Input);
+                    var param4 = new OracleParameter("out_cursor", OracleDbType.RefCursor, ParameterDirection.Output);
+                    var res = ctx.Database.SqlQuery<Responsive_NhapXuatTon_DTO>(
+                    "BEGIN TC_REPORT.EXCEL_NHAP_XUAT_TON(:pApe_id_2,:pSto_code,:pApe_id,:rpt); end;",
+                    param1, param2, param3, param4).ToList();
+                  
+                    return await System.Threading.Tasks.Task.FromResult(res.ToList());
+                }
+            }
+            catch { throw; }
+        }
+        public async Task<List<Responsive_TonKhoHienThoi_DTO>> EportTonKhoHienThoi(string Ape_id, string Sto_code)
+        {
+            try
+            {
+                using (var ctx = new ReportEntities())
+                {
+                    var param0 = new OracleParameter("pApe_id", OracleDbType.Varchar2, Ape_id, ParameterDirection.Input);
+                    var param1 = new OracleParameter("pSto_code", OracleDbType.Varchar2, Sto_code, ParameterDirection.Input);
+                    var param3 = new OracleParameter("out_cursor", OracleDbType.RefCursor, ParameterDirection.Output);
+                    var res = ctx.Database.SqlQuery<Responsive_TonKhoHienThoi_DTO>(
+                    "BEGIN TC_REPORT.EXCEL_TON_KHO_HIEN_THOI(:pApe_id,:pSto_code,:rpt); end;",
+                    param0, param1, param3);                 
+                    return await System.Threading.Tasks.Task.FromResult(res.ToList());
+                }
+            }
+            catch { throw; }
         }
     }
 }

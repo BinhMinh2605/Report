@@ -15,9 +15,8 @@
         @using (Html.BeginForm("Search", "NhapXuatTon", FormMethod.Post))
         {
             <ul class="nav navbar-nav navbar-right">
-
                 <li class="dropdown">
-                    <select name="Sto_code" id="monthYearDropDown">
+                    <select name="Sto_code" id="stoCodeDropDown">
                         @foreach (var item in stoCodeList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
@@ -25,21 +24,44 @@
                     </select>
                 </li>
                 <li>
-                    <select name="Ape_id" id="monthYearDropDown">
+                    <select name="Ape_id" id="apeIdDropDown">
                         @foreach (var item in monthYearList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
                         }
                     </select>
                 </li>
-
-
                 <input type="submit" value="Lưu" />
-
             </ul>
         }
+
+        @using (Html.BeginForm("Export", "NhapXuatTon", FormMethod.Post))
+        {
+            <input type="hidden" name="Export_Sto_code" id="exportStoCode" />
+            <input type="hidden"  name="Export_Ape_id" id="exportApeId" />
+            <input type="submit" value="Export" />
+        }
+
     </div>
 </nav>
+<script>
+    window.onload = function () {
+        var defaultStoCode = document.getElementById("stoCodeDropDown").value;
+        document.getElementById("exportStoCode").value = defaultStoCode;
+
+        var defaultApeId = document.getElementById("apeIdDropDown").value;
+        document.getElementById("exportApeId").value = defaultApeId;
+    }
+    document.getElementById("stoCodeDropDown").addEventListener("change", function () {
+        var selectedStoCode = this.value;
+        document.getElementById("exportStoCode").value = selectedStoCode; 
+    });
+
+    document.getElementById("apeIdDropDown").addEventListener("change", function () {
+        var selectedApeId = this.value;
+        document.getElementById("exportApeId").value = selectedApeId; 
+    });
+</script>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
