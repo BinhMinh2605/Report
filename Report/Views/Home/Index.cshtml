@@ -12,126 +12,218 @@
     var stoCodeList = ViewBag.StoCodeList as List<string>;
 }
 
+
 <nav class="navbar navbar-default">
     <div class="collapse navbar-collapse">
-        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
-        {
-            <ul class="nav navbar-nav navbar-right">
-
-                <li class="dropdown">
-                    <select name="Sto_code" id="monthYearDropDown">
+        <div class="row">
+            <div class="col-md-4 col-1">
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                {
+                    <select name="Sto_code" id="monthYearDropDown" class="custom-select">
                         @foreach (var item in stoCodeList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
                         }
                     </select>
-                </li>
-                <li>
-                    <select name="Ape_id" id="monthYearDropDown">
+
+                    <select name="Ape_id" id="monthYearDropDown" class="custom-select">
+
                         @foreach (var item in monthYearList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
                         }
                     </select>
-                </li>
-
-
-                <input type="submit" value="Lưu" />
-
-            </ul>
-        }
-      
-    </div>
-</nav>
-
-<p>Tổng @Tong_Phieu_Nhap</p>
-<p>Thiếu @Tong_Phieu_Thieu_Thong_Tin</p>
-<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <table class="fold-table">
-                <thead>
-                    <tr>
-                        <th>Số phiếu nhập</th>
-                        <th>Số chứng từ</th>
-                        <th>Hợp đồng GC</th>
-                        <th>Mã hợp đồng</th>
-                        <th>Số hợp đồng</th>
-                        <th>Số vận đơn</th>
-                        <th>Ngày vận đơn</th>
-                        <th>Số tờ khai</th>
-                        <th>Ngày tờ khai</th>
-                       
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model != null && Model.Any())
-                    {
-                        foreach (var item in Model)
-                        {
-                            <tr class="view">
-
-                                <td>@item.SO_PHIEU_NHAP</td>
-                                <td>@item.SO_CHUNG_TU</td>
-                                <td>@item.HD_GC</td>
-                                <td>@item.MA_HOP_DONG</td>
-                                <td>@item.SO_HOP_DONG</td>
-
-                                <td>@item.SO_VAN_DON</td>
-                                <td>@item.NGAY_VAN_DON</td>
-                                <td>@item.SO_TO_KHAI_HAI_QUAN</td>
-                                <td>@item.NGAY_TO_KHAI_HAI_QUAN</td>
-                            </tr>
-                            <tr class="fold">
-                                <td colspan="7">
-                                    <div class="fold-content">
-
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Mã Hàng</th>
-                                                    <th>Lot</th>
-                                                    <th>Mã Hải Quan</th>
-                                                   
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var detail in item.Dashboard_Details_DTO)
-                                                {
-                                                    <tr>
-                                                        <td>@detail.NAME</td>
-                                                        <td>@detail.LOT_NUMBER</td>
-                                                        <td>@detail.MA_HAI_QUAN</td>
-
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-
-
-                        <div>
-                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                        </div>
-                    }
-
-                </tbody>
-            </table>
+                    <input class="btn btn-success" type="submit" value="Search" />
+                }
+            </div>
+            @*<div class="col-md-4 col-1">
+                @using (Html.BeginForm("Export", "TonKhoHienThoi", FormMethod.Post))
+                {
+                    <input type="hidden" name="Export_Sto_code" id="exportStoCode" />
+                    <input type="hidden" name="Export_Ape_id" id="exportApeId" />
+                    <input type="submit" id="bodyClick" class="btn btn-primary" value="Export" />
+                }
+            </div>*@
         </div>
     </div>
-</div>
-
+</nav>
 
 
 
 <style>
 
 
+    .custom-select {
+        position: relative;
+        width: 200px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    #bodyClick {
+        width: 100px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .custom-select select {
+        display: block;
+        width: 150%;
+        padding: 10px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        appearance: none; /* Loại bỏ giao diện mặc định của select */
+    }
+</style>
+
+
+
+
+
+
+
+<div class="col-md-2 col-1">
+    <div class="card card-1">
+
+        <div class="container">
+            <h4><b style="font-size: 22px;">@Tong_Phieu_Nhap</b></h4>
+            <b style="font-size: 16px;">Tổng phiếu nhập</b>
+        </div>
+    </div>
+</div>
+<div class="col-md-2 col-1">
+    <div class="card card-2">
+
+        <div class="container">
+            <h4><b style="font-size: 22px;"> @Tong_Phieu_Thieu_Thong_Tin</b></h4>
+            <b style="font-size: 16px;">Tổng phiếu thiếu thông tin</b>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <div class="collapse navbar-collapse">
+
+                    <table class="fold-table">
+                        <thead>
+                            <tr>
+                                <th>Số phiếu nhập</th>
+                                <th>Số chứng từ</th>
+                                <th>Hợp đồng GC</th>
+                                <th>Mã hợp đồng</th>
+                                <th>Số hợp đồng</th>
+                                <th>Số vận đơn</th>
+                                <th>Ngày vận đơn</th>
+                                <th>Số tờ khai</th>
+                                <th>Ngày tờ khai</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model != null && Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr class="view">
+
+                                        <td>@item.SO_PHIEU_NHAP</td>
+                                        <td>@item.SO_CHUNG_TU</td>
+                                        <td>@item.HD_GC</td>
+                                        <td>@item.MA_HOP_DONG</td>
+                                        <td>@item.SO_HOP_DONG</td>
+
+                                        <td>@item.SO_VAN_DON</td>
+                                        <td>@item.NGAY_VAN_DON</td>
+                                        <td>@item.SO_TO_KHAI_HAI_QUAN</td>
+                                        <td>@item.NGAY_TO_KHAI_HAI_QUAN</td>
+                                    </tr>
+                                    <tr class="fold">
+                                        <td colspan="7">
+                                            <div class="fold-content">
+
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Mã Hàng</th>
+                                                            <th>Lot</th>
+                                                            <th>Mã Hải Quan</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var detail in item.Dashboard_Details_DTO)
+                                                        {
+                                                            <tr>
+                                                                <td>@detail.NAME</td>
+                                                                <td>@detail.LOT_NUMBER</td>
+                                                                <td>@detail.MA_HAI_QUAN</td>
+
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </nav>
+            @if (Model != null && Model != null && Model.Any())
+            {
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-1 {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 10px;
+        height: 70px;
+        background-color: limegreen;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+    .card-2 {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        height: 70px;
+        border-radius: 10px;
+        background-color: orange;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+</style>
+
+
+<style>
+    .fold-table {
+        border-collapse: collapse;
+    }
+
+        .fold-table th,
+        .fold-table td {
+            border: 1px solid #000; /* Màu và độ dày của đường viền */
+            padding: 8px; /* Khoảng cách giữa nội dung và đường viền */
+        }
     .pcs:after {
         content: " pcs";
     }

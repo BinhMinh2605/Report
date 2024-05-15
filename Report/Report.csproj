@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Report</RootNamespace>
     <AssemblyName>Report</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -124,6 +125,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Formats.Asn1, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Formats.Asn1.8.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
@@ -162,12 +164,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -208,6 +207,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -229,6 +229,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhapXuatTonController.cs" />
+    <Compile Include="Controllers\PhuLieuMayController.cs" />
     <Compile Include="Controllers\TonKhoHienThoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +245,27 @@
     <Compile Include="Models\DTO\Responsive_TonKhoHienThoi_DTO.cs" />
     <Compile Include="Models\DTO\TonKhoHienThoi_Details_DTO.cs" />
     <Compile Include="Models\DTO\TonKhoHienThoi_DTO.cs" />
+    <Compile Include="Models\ERPModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERPModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERPModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERPModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERPModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PFK5517.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PFK5518.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\STORE.cs">
       <DependentUpon>ReportModel.tt</DependentUpon>
     </Compile>
@@ -278,28 +300,6 @@
     <Content Include="assets\fonts\nucleo-icons.svg" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.svg" />
     <Content Include="assets\img\1551761607TC.png" />
-    <Content Include="assets\img\apple-icon.png" />
-    <Content Include="assets\img\default-avatar.png" />
-    <Content Include="assets\img\faces\face-0.jpg" />
-    <Content Include="assets\img\faces\face-1.jpg" />
-    <Content Include="assets\img\faces\face-2.jpg" />
-    <Content Include="assets\img\faces\face-3.jpg" />
-    <Content Include="assets\img\faces\face-4.jpg" />
-    <Content Include="assets\img\faces\face-5.jpg" />
-    <Content Include="assets\img\faces\face-6.jpg" />
-    <Content Include="assets\img\faces\face-7.jpg" />
-    <Content Include="assets\img\faces\tim_vector.jpe" />
-    <Content Include="assets\img\favicon.ico" />
-    <Content Include="assets\img\full-screen-image-3.jpg" />
-    <Content Include="assets\img\loading-bubbles.svg" />
-    <Content Include="assets\img\mask.png" />
-    <Content Include="assets\img\new_logo.png" />
-    <Content Include="assets\img\sidebar-1.jpg" />
-    <Content Include="assets\img\sidebar-2.jpg" />
-    <Content Include="assets\img\sidebar-3.jpg" />
-    <Content Include="assets\img\sidebar-4.jpg" />
-    <Content Include="assets\img\sidebar-5.jpg" />
-    <Content Include="assets\img\tim_80x80.png" />
     <Content Include="assets\js\bootstrap-notify.js" />
     <Content Include="assets\js\bootstrap-select.js" />
     <Content Include="assets\js\bootstrap.min.js" />
@@ -324,6 +324,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ERPModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERPModel.edmx</DependentUpon>
+      <LastGenOutput>ERPModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ERPModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERPModel.edmx</DependentUpon>
+      <LastGenOutput>ERPModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\ReportModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ReportModel.Context.cs</LastGenOutput>
@@ -383,6 +393,13 @@
     <Content Include="assets\fonts\Pe-icon-7-stroke.eot" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.woff" />
+    <EntityDeploy Include="Models\ERPModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERPModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ERPModel.edmx.diagram">
+      <DependentUpon>ERPModel.edmx</DependentUpon>
+    </Content>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -420,6 +437,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\img\faces\" />
+    <Folder Include="Views\PhuLieuMay\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

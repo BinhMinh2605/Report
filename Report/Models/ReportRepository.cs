@@ -131,7 +131,7 @@ namespace Report.Models
                         SL_TON = x.Sum(a => a.SL_TON).Value,
                         SL_NHAP = x.Sum(a => a.SL_NHAP).Value,
                         SL_XUAT = x.Sum(a => a.SL_XUAT).Value,
-                        SL_CUOI = x.Sum(a => a.SL_TON).Value + x.Sum(a => a.SL_NHAP).Value - x.Sum(a => a.SL_XUAT).Value,
+                        SL_CUOI = (x.Sum(a => a.SL_TON).Value + x.Sum(a => a.SL_NHAP).Value )- x.Sum(a => a.SL_XUAT).Value,
 
 
                         NhapXuatTon_Details_DTO = x.Select(y => new NhapXuatTon_Details_DTO

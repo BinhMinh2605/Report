@@ -11,183 +11,184 @@
     var stoCodeList = ViewBag.StoCodeList as List<string>;
 }
 
+
+
 <nav class="navbar navbar-default">
     <div class="collapse navbar-collapse">
-        @using (Html.BeginForm("Search", "TonKhoHienThoi", FormMethod.Post))
-        {
-            <ul class="nav navbar-nav navbar-right">
+        <div class="row">
+            <div class="col-md-3">
+                @using (Html.BeginForm("Search", "TonKhoHienThoi", FormMethod.Post))
+                {
 
-                <li class="dropdown">
-                    <select name="Sto_code" id="monthYearDropDown">
+                    <select name="Sto_code" id="monthYearDropDown" class="custom-select">
                         @foreach (var item in stoCodeList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedStoCode ? "selected" : "")>@item</option>
                         }
                     </select>
-                </li>
-                <li>
-                    <select name="Ape_id" id="monthYearDropDown">
+
+                    <select name="Ape_id" id="monthYearDropDown" class="custom-select">
                         @foreach (var item in monthYearList)
                         {
                             <option value="@item" @(item == ViewBag.SelectedApeId ? "selected" : "")>@item</option>
                         }
                     </select>
-                </li>
 
 
-                <input type="submit" value="Lưu" />
+                    <input class="btn btn-success" type="submit" value="Search" />
 
-            </ul>
-        }
-        @using (Html.BeginForm("Export", "TonKhoHienThoi", FormMethod.Post))
-        {
-            <input type="hidden" name="Export_Sto_code" id="exportStoCode" />
-            <input type="hidden" name="Export_Ape_id" id="exportApeId" />
-            <input type="submit" value="Export" />
-        }
+
+                }
+            </div>
+            <div class="col-md-2 col-1">
+                @using (Html.BeginForm("Export", "TonKhoHienThoi", FormMethod.Post))
+                {
+                    <input type="hidden" name="Export_Sto_code" id="exportStoCode" />
+                    <input type="hidden" name="Export_Ape_id" id="exportApeId" />
+                    <input type="submit" id="bodyClick" class="btn btn-primary" value="Export" />
+                }
+            </div>
+        </div>
     </div>
+
+
 </nav>
 
-<script>
-    window.onload = function () {
-        var defaultStoCode = document.getElementById("stoCodeDropDown").value;
-        document.getElementById("exportStoCode").value = defaultStoCode;
 
-        var defaultApeId = document.getElementById("apeIdDropDown").value;
-        document.getElementById("exportApeId").value = defaultApeId;
-    }
-    document.getElementById("stoCodeDropDown").addEventListener("change", function () {
-        var selectedStoCode = this.value;
-        document.getElementById("exportStoCode").value = selectedStoCode;
-    });
 
-    document.getElementById("apeIdDropDown").addEventListener("change", function () {
-        var selectedApeId = this.value;
-        document.getElementById("exportApeId").value = selectedApeId;
-    });
-</script>
+
+
+
 <div class="content">
     <div class="row">
         <div class="col-md-12">
-            <table class="fold-table">
-                <thead>
-                    <tr>
-                        <th>Mã Lô</th>
-                        <th>Mã Hàng</th>
-                        <th>Tên Hàng</th>
-                        <th>ERP Code</th>
-                        <th>Khu Vực Kho</th>
-                        <th>Tên Thuộc Tính</th>
-                        <th>Tồn Cuối</th>
-                        <th>ĐVT</th>
-                        <th>Mã Kho</th>
-                        <th>Tồn Cuối Quy Đổi</th>
-                        <th>Mẫu</th>
-                        <th>Số Bảng Kê</th>
-                        <th>Số Trục</th>
-                        <th>Mã Mẫu</th>
-                        <th>Kích Kho</th>
-                        <th>Khách Hàng</th>
-                        <th>Đơn Đặt Hàng</th>
-                        <th>Số Hóa Đơn</th>
-                        <th>Ngày Nhập</th>
-                        <th>Sử Dụng</th>
+            <nav class="navbar navbar-default">
+                <div class="collapse navbar-collapse">
+                    <table class="fold-table">
+                        <thead>
+                            <tr>
+                                <th class="no-wrap">Mã Lô</th>
+                                <th class="no-wrap">Mã Hàng</th>
+                                <th class="no-wrap">Tên Hàng</th>
+                                <th class="no-wrap">ERP Code</th>
+                                @*<th>Khu Vực Kho</th>*@
+                                <th class="no-wrap">Tên Thuộc Tính</th>
+                                <th class="no-wrap">Tồn Cuối</th>
+                                <th class="no-wrap">ĐVT</th>
+                                @*<th>Mã Kho</th>*@
+                                <th class="no-wrap">Tồn Cuối Quy Đổi</th>
+                                <th class="no-wrap">Mẫu</th>
+                                <th class="no-wrap">Số Bảng Kê</th>
+                                <th class="no-wrap">Số Trục</th>
+                                <th class="no-wrap">Mã Mẫu</th>
+                                <th class="no-wrap">Kích Kho</th>
+                                <th class="no-wrap">Khách Hàng</th>
+                                <th class="no-wrap">Đơn Đặt Hàng</th>
+                                <th class="no-wrap">Số Hóa Đơn</th>
+                                <th class="no-wrap">Ngày Nhập</th>
+                                @*<th>Sử Dụng</th>*@
 
-                        <th>Phân Loại</th>
-                        <th>PO</th>
-                        <th>Yarn Lot</th>
-                        <th>Thành Phần Vải</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model != null && Model.Any())
-                    {
-                        foreach (var item in Model)
-                        {
-                            <tr class="view">
-                                <td>@item.Ma_lo</td>
-                                <td>@item.Ma_hang</td>
-                                <td>@item.Ten_hang</td>
-                                <td>@item.ERP_CODE</td>
-
-                                <td>@item.Khu_vuc_kho</td>
-                                <td>@item.Ten_thuoc_tinh</td>
-                                <td>@item.Ton_cuoi</td>
-                                <td>@item.DVT</td>
-                                <td>@item.makho</td>
-                                <td>@item.Ton_cuoi_quy_doi</td>
-                                <td>@item.Mau </td>
-                                <td>@item.SoBangKe</td>
-                                <td>@item.SoTruc</td>
-                                <td>@item.MaMau</td>
-                                <td>@item.KichKho</td>
-                                <td>@item.KhachHang</td>
-                                <td>@item.DonDatHang</td>
-                                <td>@item.SoHD</td>
-                                <td>@item.Ngay_nhap</td>
-                                <td>@item.SuDung</td>
-                                <td>@item.PhanLoai</td>
-                                <td>@item.PO</td>
-                                <td>@item.YARN_LOT</td>
-                                <td>@item.THANH_PHAN_VAI</td>
-
+                                <th class="no-wrap">Phân Loại</th>
+                                <th class="no-wrap">PO</th>
+                                <th class="no-wrap">Yarn Lot</th>
+                                <th class="no-wrap">Thành Phần Vải</th>
                             </tr>
-                            <tr class="fold">
-                                <td colspan="7">
-                                    <div class="fold-content">
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model != null && Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr class="view">
+                                        <td class="center">@item.Ma_lo</td>
+                                        <td class="center">@item.Ma_hang</td>
+                                        <td class="center">@item.Ten_hang</td>
+                                        <td class="center">@item.ERP_CODE</td>
 
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>HD GC</th>
-                                                    <th>SO_VAN_DON</th>
-                                                    <th>NGAY_VAN_DON</th>
-                                                    <th>SO_TO_KHAI_HAI_QUAN</th>
-                                                    <th>NGAY_TO_KHAI_HAI_QUAN</th>
-                                                    <th>MA_HOP_DONG</th>
-                                                    <th>SO_HOP_DONG</th>
-                                                    <th>LOAI_GIAO_DICH</th>
-                                                    <th>THANH_PHAN_VAI</th>
-                                                    <th>SO_PHIEU_NHAP</th>
-                                                    <th>SO_CHUNG_TU</th>
-                                                    <th>MA_HAI_QUAN</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var detail in item.TonKhoHienThoi_Details_DTO)
-                                                {
-                                                    <tr>
-                                                        <td>@detail.HD_GC</td>
-                                                        <td>@detail.SO_VAN_DON</td>
-                                                        <td>@detail.NGAY_VAN_DON</td>
-                                                        <td>@detail.SO_TO_KHAI_HAI_QUAN</td>
-                                                        <td>@detail.NGAY_TO_KHAI_HAI_QUAN</td>
-                                                        <td>@detail.MA_HOP_DONG</td>
-                                                        <td>@detail.SO_HOP_DONG</td>
-                                                        <td>@detail.LOAI_GIAO_DICH</td>
-                                                        <td>@detail.THANH_PHAN_VAI</td>
-                                                        <td>@detail.SO_PHIEU_NHAP</td>
-                                                        <td>@detail.SO_CHUNG_TU</td>
-                                                        <td>@detail.MA_HAI_QUAN</td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
+                                        @*<td>@item.Khu_vuc_kho</td>*@
+                                        <td>@item.Ten_thuoc_tinh</td>
+                                        <td class="center">@item.Ton_cuoi</td>
+                                        <td class="center">@item.DVT</td>
+                                        @*<td>@item.makho</td>*@
+                                        <td class="center">@item.Ton_cuoi_quy_doi</td>
+                                        <td class="center">@item.Mau </td>
+                                        <td class="center">@item.SoBangKe</td>
+                                        <td class="center">@item.SoTruc</td>
+                                        <td class="center">@item.MaMau</td>
+                                        <td class="center">@item.KichKho</td>
+                                        <td class="center">@item.KhachHang</td>
+                                        <td class="center">@item.DonDatHang</td>
+                                        <td class="center">@item.SoHD</td>
+                                        <td class="center">@item.Ngay_nhap</td>
+                                        @*<td>@item.SuDung</td>*@
+                                        <td class="center">@item.PhanLoai</td>
+                                        <td class="center">@item.PO</td>
+                                        <td class="center">@item.YARN_LOT</td>
+                                        <td class="center">@item.THANH_PHAN_VAI</td>
+
+                                    </tr>
+                                    <tr class="fold">
+                                        <td colspan="7">
+                                            <div class="fold-content">
+
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="no-wrap">Hợp Đồng GC</th>
+                                                            <th class="no-wrap">Số Vận Đơn</th>
+                                                            <th class="no-wrap">Ngày Vận Đơn</th>
+                                                            <th class="no-wrap">Số Tờ Khai Hải Quan</th>
+                                                            <th class="no-wrap">Ngày Tờ Khai Hải Quan</th>
+                                                            <th class="no-wrap">Mã Hợp Đồng</th>
+                                                            <th class="no-wrap">Số Hợp Đồng</th>
+                                                            <th class="no-wrap">Loại Giao Dịch</th>
+                                                            <th class="no-wrap">Thành Phần Vải</th>
+                                                            <th class="no-wrap">Số Phiếu Nhập</th>
+                                                            <th class="no-wrap">Số Chứng Từ</th>
+                                                            <th class="no-wrap">Mã Hải Quan</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var detail in item.TonKhoHienThoi_Details_DTO)
+                                                        {
+                                                            <tr>
+                                                                <td>@detail.HD_GC</td>
+                                                                <td>@detail.SO_VAN_DON</td>
+                                                                <td>@detail.NGAY_VAN_DON</td>
+                                                                <td>@detail.SO_TO_KHAI_HAI_QUAN</td>
+                                                                <td>@detail.NGAY_TO_KHAI_HAI_QUAN</td>
+                                                                <td>@detail.MA_HOP_DONG</td>
+                                                                <td>@detail.SO_HOP_DONG</td>
+                                                                <td>@detail.LOAI_GIAO_DICH</td>
+                                                                <td>@detail.THANH_PHAN_VAI</td>
+                                                                <td>@detail.SO_PHIEU_NHAP</td>
+                                                                <td>@detail.SO_CHUNG_TU</td>
+                                                                <td>@detail.MA_HAI_QUAN</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
 
 
-                        <div>
-                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                        </div>
-                    }
+                            }
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </nav>
+            @if (Model != null && Model != null && Model.Any())
+            {
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -197,6 +198,24 @@
 
 <style>
 
+    .no-wrap {
+        white-space: nowrap; /* Ngăn chặn chữ trong thẻ <th> bị xuống dòng */
+    }
+
+    .fold-table {
+        border-collapse: collapse;
+    }
+
+    td.center {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .fold-table th,
+    .fold-table td {
+        border: 1px solid #000; /* Màu và độ dày của đường viền */
+        padding: 8px; /* Khoảng cách giữa nội dung và đường viền */
+    }
 
     .pcs:after {
         content: " pcs";
@@ -302,3 +321,50 @@
     });
 </script>
 
+<script>
+    window.onload = function () {
+        var defaultStoCode = document.getElementById("stoCodeDropDown").value;
+        document.getElementById("exportStoCode").value = defaultStoCode;
+
+        var defaultApeId = document.getElementById("apeIdDropDown").value;
+        document.getElementById("exportApeId").value = defaultApeId;
+    }
+    document.getElementById("stoCodeDropDown").addEventListener("change", function () {
+        var selectedStoCode = this.value;
+        document.getElementById("exportStoCode").value = selectedStoCode;
+    });
+
+    document.getElementById("apeIdDropDown").addEventListener("change", function () {
+        var selectedApeId = this.value;
+        document.getElementById("exportApeId").value = selectedApeId;
+    });
+</script>
+<style>
+
+
+    .custom-select {
+        position: relative;
+        width: 200px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    #bodyClick {
+        width: 100px;
+        padding: 5px;
+        margin-top: 10px;
+        position: relative
+    }
+
+    .custom-select select {
+        display: block;
+        width: 150%;
+        padding: 10px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        appearance: none; /* Loại bỏ giao diện mặc định của select */
+
+    }
+</style>

@@ -4,70 +4,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
-    <link href="assets/css/demo.css" rel="stylesheet" />
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/js/chartist.min.js"></script>
-    <script src="assets/js/bootstrap-notify.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-    <script src="assets/js/demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <img src="assets\img\1551761607TC.png" class="img-thumbnail" alt="...">
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col fixed-menu">
+
+                    <div class="logo">
+                        <div class="img-container">
+                            <img src="assets\img\1551761607TC.png" class="img-thumbnail" alt="...">
+                        </div>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" id="menu1" onclick="highlightMenu('menu1')" href="Home"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="menu2" onclick="highlightMenu('menu2')" href="NhapXuatTon"><i class="fas fa-tachometer-alt"></i>Nhập Xuất Tồn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="menu3" onclick="highlightMenu('menu3')" href="TonKhoHienThoi"><i class="fas fa-tachometer-alt"></i>Tồn Kho Hiện Thời</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="menu3" onclick="highlightMenu('menu4')" href="PhuLieuMay"><i class="fas fa-tachometer-alt"></i>PGN-Phụ liệu may</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Nội dung cố định bên phải -->
+                <div class="col content">
+
+                    <!-- Nội dung cột chính -->
+                    @RenderBody()
                 </div>
-
-                <ul class="nav">
-                    <li class="active">
-                        <a href="Home/Index">
-                            <i class="pe-7s-graph"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="TonKhoHienThoi/Index">
-                            <i class="pe-7s-note2"></i>
-                            <p>Tồn Kho Hiện Thời</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="NhapXuatTon/Index">
-                            <i class="pe-7s-note2"></i>
-                            <p>Nhập Xuất Tồn</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="table.html">
-                            <i class="pe-7s-note2"></i>
-                            <p>Xuất Kho Vải</p>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <div class="container-xxl">
-                @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                </footer>
             </div>
         </div>
     </div>
@@ -76,3 +51,78 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<style>
+    .fixed-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 250px;
+        overflow-y: auto;
+        background-color: #007bff;
+        z-index: 1;
+    }
+
+
+    nav ul li a:hover {
+        background: #1d4f71;
+        color: #fff;
+    }
+
+    .container-fluid {
+        display: grid;
+        grid-template-columns: 250px auto;
+        grid-template-rows: auto;
+    }
+
+    .content {
+        height: 100vh;
+        padding: 0px;
+     
+    }
+
+    .logo .img-container {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .nav-link {
+        color: white;
+        margin-left: auto;
+        font-weight: bold; /* In đậm chữ */
+        padding: 10px; /* Thêm padding 20px */
+        letter-spacing: 2px; /* Giảm khoảng cách giữa các chữ */
+        margin-right: 20px; /* Khoảng cách giữa các menu item */
+        font-size: 16px; /* Kích thước chữ */
+    }
+    .nav-link:hover {
+        color: darkblue;
+    }
+    .nav-link {
+        transition: color 0.3s;
+    }
+        .nav-link.active {
+            background-color: yellow;
+            /* Màu nền khi mục menu được chọn */
+        }
+    .active {
+        background-color: yellow;
+        /* Màu nền khi mục menu được chọn */
+    }
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function highlightMenu(menuId) {
+        // Loại bỏ lớp 'active' từ tất cả các mục menu
+        var menuItems = document.querySelectorAll('.nav-link');
+        menuItems.forEach(function (item) {
+            item.classList.remove('active');
+        });
+
+        // Thêm lớp 'active' chỉ cho mục menu được click
+        document.getElementById(menuId).classList.add('active');
+        var s = menuId;
+      //  alert(s);
+    }
+</script>

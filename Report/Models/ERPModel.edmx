@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="THANHCONG_MESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PFK5517">
+          <Key>
+            <PropertyRef Name="K5517_IRCode" />
+          </Key>
+          <Property Name="K5517_IRCode" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="K5517_DateCreate" Type="char" MaxLength="8" />
+          <Property Name="K5517_DateEdit" Type="char" MaxLength="8" />
+          <Property Name="K5517_DateReceiveExpect" Type="char" MaxLength="8" />
+          <Property Name="K5517_Creator" Type="char" MaxLength="8" />
+          <Property Name="K5517_Editor" Type="char" MaxLength="8" />
+          <Property Name="K5517_Beneficiary" Type="char" MaxLength="6" />
+          <Property Name="K5517_Agent" Type="char" MaxLength="6" />
+          <Property Name="K5517_CommercialTerm" Type="char" MaxLength="3" />
+          <Property Name="K5517_PaymentCondition" Type="char" MaxLength="3" />
+          <Property Name="K5517_Currency" Type="char" MaxLength="3" />
+          <Property Name="K5517_DateExchange" Type="char" MaxLength="8" />
+          <Property Name="K5517_ExchangeRate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="K5517_VAT" Type="char" MaxLength="3" />
+          <Property Name="K5517_Market" Type="char" MaxLength="1" />
+          <Property Name="K5517_InboundKind" Type="char" MaxLength="3" />
+          <Property Name="K5517_Warehouse" Type="char" MaxLength="3" />
+          <Property Name="K5517_Remark" Type="nvarchar(max)" />
+          <Property Name="K5517_ContractCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="K5517_ContractNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5517_InboundNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5517_InvoiceNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5517_InvoiceDate" Type="char" MaxLength="8" />
+          <Property Name="K5517_InvoiceCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="K5517_InvoiceForm" Type="char" MaxLength="3" />
+          <Property Name="K5517_DeclarationNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5517_DeclarationDate" Type="char" MaxLength="8" />
+          <Property Name="K5517_Package" Type="nvarchar" MaxLength="50" />
+          <Property Name="K5517_GrossWeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="K5517_AdditionalCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_HandlingFee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_ImpTax" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_SpeConTax" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_EnvTax" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_ImpVAT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_DocumentationFee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_TerminalHandlingFee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_CurrencyAdditionalCost" Type="char" MaxLength="3" />
+          <Property Name="K5517_CurrencyHandlingFee" Type="char" MaxLength="3" />
+          <Property Name="K5517_CurrencyImpTax" Type="char" MaxLength="3" />
+          <Property Name="K5517_CurrencySpeConTax" Type="char" MaxLength="3" />
+          <Property Name="K5517_CurrencyEnvTax" Type="char" MaxLength="3" />
+          <Property Name="K5517_DateComplete" Type="char" MaxLength="8" />
+          <Property Name="K5517_DateApproval" Type="char" MaxLength="8" />
+          <Property Name="K5517_DateCancel" Type="char" MaxLength="8" />
+          <Property Name="K5517_CheckState" Type="char" MaxLength="1" />
+          <Property Name="K5517_BOL" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5517_BOLDate" Type="char" MaxLength="8" />
+          <Property Name="K5517_InvoiceLink" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PFK5518">
+          <Key>
+            <PropertyRef Name="K5518_IRCode" />
+            <PropertyRef Name="K5518_IRSeq" />
+          </Key>
+          <Property Name="K5518_IRCode" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="K5518_IRSeq" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="K5518_POCode" Type="char" MaxLength="10" />
+          <Property Name="K5518_POSeq" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5518_FILENO" Type="char" MaxLength="13" />
+          <Property Name="K5518_MODEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="K5518_CBNO" Type="char" MaxLength="2" />
+          <Property Name="K5518_SZNO" Type="char" MaxLength="2" />
+          <Property Name="K5518_ASRTYPE" Type="char" MaxLength="3" />
+          <Property Name="K5518_ASRCODE" Type="char" MaxLength="6" />
+          <Property Name="K5518_ASRCBNO" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5518_ASRSZNO" Type="nvarchar" MaxLength="100" />
+          <Property Name="K5518_QtyBooking" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="K5518_QtyRequestIn" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="K5518_Tolerance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="K5518_Price" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="K5518_Supplier" Type="char" MaxLength="6" />
+          <Property Name="K5518_DateReceiveExpect" Type="char" MaxLength="8" />
+          <Property Name="K5518_DateComplete" Type="char" MaxLength="8" />
+          <Property Name="K5518_DateApproval" Type="char" MaxLength="8" />
+          <Property Name="K5518_DateCancel" Type="char" MaxLength="8" />
+          <Property Name="K5518_CheckState" Type="char" MaxLength="1" />
+          <Property Name="K5518_Remark" Type="nvarchar(max)" />
+          <Property Name="K5518_PRCode" Type="char" MaxLength="10" />
+          <Property Name="K5518_PRSeq" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="K5518_Remark_V2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="THANHCONG_MESModelStoreContainer">
+          <EntitySet Name="PFK5517" EntityType="Self.PFK5517" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PFK5518" EntityType="Self.PFK5518" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="THANHCONG_MESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PFK5517">
+          <Key>
+            <PropertyRef Name="K5517_IRCode" />
+          </Key>
+          <Property Name="K5517_IRCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="K5517_DateCreate" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateEdit" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateReceiveExpect" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Creator" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Editor" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Beneficiary" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Agent" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CommercialTerm" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_PaymentCondition" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateExchange" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_ExchangeRate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="K5517_VAT" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Market" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_InboundKind" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Warehouse" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_ContractCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_ContractNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_InboundNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_InvoiceNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_InvoiceDate" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_InvoiceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_InvoiceForm" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DeclarationNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_DeclarationDate" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_Package" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_GrossWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_AdditionalCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_HandlingFee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_ImpTax" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_SpeConTax" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_EnvTax" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_ImpVAT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_DocumentationFee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_TerminalHandlingFee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5517_CurrencyAdditionalCost" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CurrencyHandlingFee" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CurrencyImpTax" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CurrencySpeConTax" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CurrencyEnvTax" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateComplete" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateApproval" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_DateCancel" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_CheckState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_BOL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5517_BOLDate" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5517_InvoiceLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PFK5518">
+          <Key>
+            <PropertyRef Name="K5518_IRCode" />
+            <PropertyRef Name="K5518_IRSeq" />
+          </Key>
+          <Property Name="K5518_IRCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="K5518_IRSeq" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="K5518_POCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_POSeq" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5518_FILENO" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_MODEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="K5518_CBNO" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_SZNO" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_ASRTYPE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_ASRCODE" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_ASRCBNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5518_ASRSZNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="K5518_QtyBooking" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="K5518_QtyRequestIn" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="K5518_Tolerance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="K5518_Price" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="K5518_Supplier" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_DateReceiveExpect" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_DateComplete" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_DateApproval" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_DateCancel" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_CheckState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="K5518_PRCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="K5518_PRSeq" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="K5518_Remark_V2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="THANHCONG_MESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PFK5517" EntityType="Self.PFK5517" />
+          <EntitySet Name="PFK5518" EntityType="Self.PFK5518" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="THANHCONG_MESModelStoreContainer" CdmEntityContainer="THANHCONG_MESEntities">
+          <EntitySetMapping Name="PFK5517">
+            <EntityTypeMapping TypeName="THANHCONG_MESModel.PFK5517">
+              <MappingFragment StoreEntitySet="PFK5517">
+                <ScalarProperty Name="K5517_IRCode" ColumnName="K5517_IRCode" />
+                <ScalarProperty Name="K5517_DateCreate" ColumnName="K5517_DateCreate" />
+                <ScalarProperty Name="K5517_DateEdit" ColumnName="K5517_DateEdit" />
+                <ScalarProperty Name="K5517_DateReceiveExpect" ColumnName="K5517_DateReceiveExpect" />
+                <ScalarProperty Name="K5517_Creator" ColumnName="K5517_Creator" />
+                <ScalarProperty Name="K5517_Editor" ColumnName="K5517_Editor" />
+                <ScalarProperty Name="K5517_Beneficiary" ColumnName="K5517_Beneficiary" />
+                <ScalarProperty Name="K5517_Agent" ColumnName="K5517_Agent" />
+                <ScalarProperty Name="K5517_CommercialTerm" ColumnName="K5517_CommercialTerm" />
+                <ScalarProperty Name="K5517_PaymentCondition" ColumnName="K5517_PaymentCondition" />
+                <ScalarProperty Name="K5517_Currency" ColumnName="K5517_Currency" />
+                <ScalarProperty Name="K5517_DateExchange" ColumnName="K5517_DateExchange" />
+                <ScalarProperty Name="K5517_ExchangeRate" ColumnName="K5517_ExchangeRate" />
+                <ScalarProperty Name="K5517_VAT" ColumnName="K5517_VAT" />
+                <ScalarProperty Name="K5517_Market" ColumnName="K5517_Market" />
+                <ScalarProperty Name="K5517_InboundKind" ColumnName="K5517_InboundKind" />
+                <ScalarProperty Name="K5517_Warehouse" ColumnName="K5517_Warehouse" />
+                <ScalarProperty Name="K5517_Remark" ColumnName="K5517_Remark" />
+                <ScalarProperty Name="K5517_ContractCode" ColumnName="K5517_ContractCode" />
+                <ScalarProperty Name="K5517_ContractNo" ColumnName="K5517_ContractNo" />
+                <ScalarProperty Name="K5517_InboundNo" ColumnName="K5517_InboundNo" />
+                <ScalarProperty Name="K5517_InvoiceNo" ColumnName="K5517_InvoiceNo" />
+                <ScalarProperty Name="K5517_InvoiceDate" ColumnName="K5517_InvoiceDate" />
+                <ScalarProperty Name="K5517_InvoiceCode" ColumnName="K5517_InvoiceCode" />
+                <ScalarProperty Name="K5517_InvoiceForm" ColumnName="K5517_InvoiceForm" />
+                <ScalarProperty Name="K5517_DeclarationNo" ColumnName="K5517_DeclarationNo" />
+                <ScalarProperty Name="K5517_DeclarationDate" ColumnName="K5517_DeclarationDate" />
+                <ScalarProperty Name="K5517_Package" ColumnName="K5517_Package" />
+                <ScalarProperty Name="K5517_GrossWeight" ColumnName="K5517_GrossWeight" />
+                <ScalarProperty Name="K5517_AdditionalCost" ColumnName="K5517_AdditionalCost" />
+                <ScalarProperty Name="K5517_HandlingFee" ColumnName="K5517_HandlingFee" />
+                <ScalarProperty Name="K5517_ImpTax" ColumnName="K5517_ImpTax" />
+                <ScalarProperty Name="K5517_SpeConTax" ColumnName="K5517_SpeConTax" />
+                <ScalarProperty Name="K5517_EnvTax" ColumnName="K5517_EnvTax" />
+                <ScalarProperty Name="K5517_ImpVAT" ColumnName="K5517_ImpVAT" />
+                <ScalarProperty Name="K5517_DocumentationFee" ColumnName="K5517_DocumentationFee" />
+                <ScalarProperty Name="K5517_TerminalHandlingFee" ColumnName="K5517_TerminalHandlingFee" />
+                <ScalarProperty Name="K5517_CurrencyAdditionalCost" ColumnName="K5517_CurrencyAdditionalCost" />
+                <ScalarProperty Name="K5517_CurrencyHandlingFee" ColumnName="K5517_CurrencyHandlingFee" />
+                <ScalarProperty Name="K5517_CurrencyImpTax" ColumnName="K5517_CurrencyImpTax" />
+                <ScalarProperty Name="K5517_CurrencySpeConTax" ColumnName="K5517_CurrencySpeConTax" />
+                <ScalarProperty Name="K5517_CurrencyEnvTax" ColumnName="K5517_CurrencyEnvTax" />
+                <ScalarProperty Name="K5517_DateComplete" ColumnName="K5517_DateComplete" />
+                <ScalarProperty Name="K5517_DateApproval" ColumnName="K5517_DateApproval" />
+                <ScalarProperty Name="K5517_DateCancel" ColumnName="K5517_DateCancel" />
+                <ScalarProperty Name="K5517_CheckState" ColumnName="K5517_CheckState" />
+                <ScalarProperty Name="K5517_BOL" ColumnName="K5517_BOL" />
+                <ScalarProperty Name="K5517_BOLDate" ColumnName="K5517_BOLDate" />
+                <ScalarProperty Name="K5517_InvoiceLink" ColumnName="K5517_InvoiceLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PFK5518">
+            <EntityTypeMapping TypeName="THANHCONG_MESModel.PFK5518">
+              <MappingFragment StoreEntitySet="PFK5518">
+                <ScalarProperty Name="K5518_IRCode" ColumnName="K5518_IRCode" />
+                <ScalarProperty Name="K5518_IRSeq" ColumnName="K5518_IRSeq" />
+                <ScalarProperty Name="K5518_POCode" ColumnName="K5518_POCode" />
+                <ScalarProperty Name="K5518_POSeq" ColumnName="K5518_POSeq" />
+                <ScalarProperty Name="K5518_FILENO" ColumnName="K5518_FILENO" />
+                <ScalarProperty Name="K5518_MODEL" ColumnName="K5518_MODEL" />
+                <ScalarProperty Name="K5518_CBNO" ColumnName="K5518_CBNO" />
+                <ScalarProperty Name="K5518_SZNO" ColumnName="K5518_SZNO" />
+                <ScalarProperty Name="K5518_ASRTYPE" ColumnName="K5518_ASRTYPE" />
+                <ScalarProperty Name="K5518_ASRCODE" ColumnName="K5518_ASRCODE" />
+                <ScalarProperty Name="K5518_ASRCBNO" ColumnName="K5518_ASRCBNO" />
+                <ScalarProperty Name="K5518_ASRSZNO" ColumnName="K5518_ASRSZNO" />
+                <ScalarProperty Name="K5518_QtyBooking" ColumnName="K5518_QtyBooking" />
+                <ScalarProperty Name="K5518_QtyRequestIn" ColumnName="K5518_QtyRequestIn" />
+                <ScalarProperty Name="K5518_Tolerance" ColumnName="K5518_Tolerance" />
+                <ScalarProperty Name="K5518_Price" ColumnName="K5518_Price" />
+                <ScalarProperty Name="K5518_Supplier" ColumnName="K5518_Supplier" />
+                <ScalarProperty Name="K5518_DateReceiveExpect" ColumnName="K5518_DateReceiveExpect" />
+                <ScalarProperty Name="K5518_DateComplete" ColumnName="K5518_DateComplete" />
+                <ScalarProperty Name="K5518_DateApproval" ColumnName="K5518_DateApproval" />
+                <ScalarProperty Name="K5518_DateCancel" ColumnName="K5518_DateCancel" />
+                <ScalarProperty Name="K5518_CheckState" ColumnName="K5518_CheckState" />
+                <ScalarProperty Name="K5518_Remark" ColumnName="K5518_Remark" />
+                <ScalarProperty Name="K5518_PRCode" ColumnName="K5518_PRCode" />
+                <ScalarProperty Name="K5518_PRSeq" ColumnName="K5518_PRSeq" />
+                <ScalarProperty Name="K5518_Remark_V2" ColumnName="K5518_Remark_V2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

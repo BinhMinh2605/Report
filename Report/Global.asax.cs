@@ -17,6 +17,7 @@ namespace Report
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Environment.SetEnvironmentVariable("ORACLE_JDBC_TIMEZONEASREGION", "false");
             //DependencyResolver.SetResolver(new NinjectDependencyResolver());
         }
     }
